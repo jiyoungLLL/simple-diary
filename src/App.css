@@ -1,0 +1,19 @@
+.container {
+  max-width: 400px;
+  background: #f7f7f7;
+  margin: auto;
+  height: 100vh;
+  padding: 20px 10px;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.content textarea {
+  width: 100%;
+  box-sizing: border-box;
+}

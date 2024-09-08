@@ -1,20 +1,38 @@
+import { useState } from "react";
+import "./App.css";
+
 function App() {
+  const [text, setText] = useState("");
+
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  const today = `${year}년 ${month}월 ${date}일`;
+
   return (
-    <div
-      style={{
-        maxWidth: 400,
-        background: "#f7f7f7",
-        margin: "auto",
-        height: "100vh",
-      }}>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div>Header</div>
+    <div className="container">
+      <div className="header">
+        <div>{today}</div>
         <div>
           <button>버튼</button>
         </div>
       </div>
-      <div>
-        <textarea style={{ width: "100%", boxSizing: "border-box" }} />
+      <div className="content">
+        <textarea
+          value={text}
+          onChange={(e) => {
+            const value = e.target.value;
+            setText(value);
+            const diary = JSON.parse(
+              window.localStorage.getItem("diary") || "{}"
+            );
+            window.localStorage.setItem(
+              "diary",
+              JSON.stringify({ ...diary, [date]: value })
+            );
+          }}
+        />
       </div>
     </div>
   );
