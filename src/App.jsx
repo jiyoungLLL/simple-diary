@@ -1,39 +1,15 @@
-import { useState } from "react";
 import "./App.css";
+import { useState } from "react";
+import MainView from "./components/MainView";
+import HistoryView from "./components/HistoryView";
 
 function App() {
-  const [text, setText] = useState("");
-
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const date = now.getDate();
-  const today = `${year}년 ${month}월 ${date}일`;
+  const [view, setView] = useState("main"); // "main" | "history"
 
   return (
     <div className="container">
-      <div className="header">
-        <div>{today}</div>
-        <div>
-          <button>버튼</button>
-        </div>
-      </div>
-      <div className="content">
-        <textarea
-          value={text}
-          onChange={(e) => {
-            const value = e.target.value;
-            setText(value);
-            const diary = JSON.parse(
-              window.localStorage.getItem("diary") || "{}"
-            );
-            window.localStorage.setItem(
-              "diary",
-              JSON.stringify({ ...diary, [date]: value })
-            );
-          }}
-        />
-      </div>
+      {view === "main" && <MainView setView={setView} />}
+      {view === "history" && <HistoryView />}
     </div>
   );
 }
