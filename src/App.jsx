@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="container">
       {view === "main" && <MainView setView={setView} />}
-      {view === "history" && <HistoryView />}
+      {view === "history" && <HistoryView setView={setView} />}
     </div>
   );
 }

@@ -1,14 +1,17 @@
 import "./HistoryView.css";
 import { useDiaryHistory } from "../hooks/useDiaryHistory";
 
-function HistoryView() {
+function HistoryView({ setView }) {
   const diary = useDiaryHistory();
 
   const diaryArray = Object.entries(diary);
 
   return (
     <>
-      <h4>다이어리 기록</h4>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <button onClick={() => setView("main")}>&lt;</button>
+        <h4>다이어리 기록</h4>
+      </div>
       {diaryArray.map(([date, value]) => (
         <div key={date} className="diary-item">
           <div>{date}</div>
