@@ -1,18 +1,17 @@
+import { useDiaryHistory } from "../hooks/useDiaryHistory";
 import "./MainView.css";
 import { useEffect, useState } from "react";
-
-const diary = JSON.parse(window.localStorage.getItem("diary") || "{}");
 
 function MainView(props) {
   const now = new Date();
   const year = now.getFullYear();
   const month = now.getMonth() + 1;
   const date = now.getDate();
-
-  const [text, setText] = useState(diary[date]);
-  const [questions, setQuestions] = useState();
-
   const today = `${year}년 ${month}월 ${date}일`;
+
+  const diary = useDiaryHistory();
+  const [text, setText] = useState(diary[today]);
+  const [questions, setQuestions] = useState();
 
   useEffect(() => {
     fetch(
@@ -51,7 +50,7 @@ function MainView(props) {
             diary[date] = value;
             window.localStorage.setItem(
               "diary",
-              JSON.stringify({ [date]: value })
+              JSON.stringify({ [today]: value })
             );
           }}
         />
