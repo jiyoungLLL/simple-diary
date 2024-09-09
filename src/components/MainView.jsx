@@ -47,11 +47,8 @@ function MainView(props) {
           onChange={(e) => {
             const value = e.target.value;
             setText(value);
-            diary[date] = value;
-            window.localStorage.setItem(
-              "diary",
-              JSON.stringify({ [today]: value })
-            );
+            diary[today] = value;
+            window.localStorage.setItem("diary", JSON.stringify(diary));
           }}
         />
       </div>
