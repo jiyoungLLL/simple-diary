@@ -9,12 +9,14 @@ function HistoryView({ setView }) {
   return (
     <>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <button onClick={() => setView("main")}>&lt;</button>
+        <button className="back-btn" onClick={() => setView("main")}>
+          &lt;
+        </button>
         <h4>다이어리 기록</h4>
       </div>
       {diaryArray.map(([date, value]) => (
         <div key={date} className="diary-item">
-          <div>{date}</div>
+          <div className="diary-date">{date}</div>
           <div>{value}</div>
         </div>
       ))}

@@ -6,7 +6,7 @@ function MainView(props) {
   const now = new Date();
   const year = now.getFullYear();
   const month = now.getMonth() + 1;
-  const date = now.getDate();
+  const date = now.getDate() + 3;
   const today = `${year}년 ${month}월 ${date}일`;
 
   const diary = useDiaryHistory();
@@ -33,6 +33,7 @@ function MainView(props) {
         <div>{today}</div>
         <div>
           <button
+            className="history-btn"
             onClick={() => {
               props.setView("history");
             }}>
