@@ -1,6 +1,6 @@
 import "./MainView.css";
 
-function MainView(props) {
+function MainView() {
   return (
     <>
       <div className="header">
@@ -9,7 +9,7 @@ function MainView(props) {
           <button
             className="history-btn"
             onClick={() => {
-              props.setView("history");
+              // HistoryView 화면으로 전환
             }}>
             기록 보기
           </button>
@@ -18,7 +18,7 @@ function MainView(props) {
       <div className="question">(질문)</div>
       <div className="content">
         <textarea
-          onChange={(e) => {
+          onChange={() => {
             console.log("onChange");
           }}
         />

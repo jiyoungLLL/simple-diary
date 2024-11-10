@@ -1,10 +1,14 @@
 import "./HistoryView.css";
 
-function HistoryView({ setView }) {
+function HistoryView() {
   return (
     <>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <button className="back-btn" onClick={() => setView("main")}>
+        <button
+          className="back-btn"
+          onClick={() => {
+            // MainView 화면으로 전환
+          }}>
           &lt;
         </button>
         <h4>다이어리 기록</h4>
