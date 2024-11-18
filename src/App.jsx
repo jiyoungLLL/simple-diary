@@ -5,6 +5,7 @@ import MainView from './components/MainView';
 
 function App() {
   const [view, setView] = useState(true);
+
   return (
     <div className='container'>
       {view ? (
