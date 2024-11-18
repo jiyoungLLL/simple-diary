@@ -1,30 +1,40 @@
-import "./MainView.css";
+import dayjs from 'dayjs';
+import './MainView.css';
 
-function MainView() {
+function MainView({ setView }) {
+  const date = dayjs();
+
   return (
     <>
-      <div className="header">
-        <div>(오늘 날짜)</div>
+      <div className='header'>
+        <div>
+          {date.get('y')}년 {date.get('M') + 1}월 {date.get('D')}일
+        </div>
         <div>
           <button
-            className="history-btn"
+            className='history-btn'
             onClick={() => {
-              // HistoryView 화면으로 전환
-            }}>
+              setView(false);
+            }}
+          >
             기록 보기
           </button>
         </div>
       </div>
-      <div className="question">(질문)</div>
-      <div className="content">
+      <div className='question'>(질문)</div>
+      <div className='content'>
         <textarea
           onChange={() => {
-            console.log("onChange");
+            console.log('onChange');
           }}
         />
       </div>
     </>
   );
 }
+
+// MainView.propTypes = {
+//   setView: PropTypes
+// }
 
 export default MainView;

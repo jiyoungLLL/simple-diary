@@ -1,13 +1,17 @@
-import "./App.css";
-import MainView from "./components/MainView";
-// eslint-disable-next-line no-unused-vars
-import HistoryView from "./components/HistoryView";
+import { useState } from 'react';
+import './App.css';
+import HistoryView from './components/HistoryView';
+import MainView from './components/MainView';
 
 function App() {
+  const [view, setView] = useState(true);
   return (
-    <div className="container">
-      <MainView />
-      {/* <HistoryView setView={setView} /> */}
+    <div className='container'>
+      {view ? (
+        <MainView setView={setView} />
+      ) : (
+        <HistoryView setView={setView} />
+      )}
     </div>
   );
 }
