@@ -5,8 +5,10 @@ import './MainView.css';
 function MainView({ setView }) {
   const [questions, setQuestions] = useState();
   const today = dayjs();
+  // const date = today.get('D');
+  const date = 20;
   const answers = JSON.parse(localStorage.getItem('diary') || {});
-  const [input, setInput] = useState(answers[today.get('D')]);
+  const [input, setInput] = useState(answers[date]);
 
   useEffect(() => {
     fetch(
@@ -28,7 +30,7 @@ function MainView({ setView }) {
     <>
       <div className='header'>
         <div>
-          {today.get('y')}년 {today.get('M') + 1}월 {today.get('D')}일
+          {today.get('y')}년 {today.get('M') + 1}월 {date}일
         </div>
         <div>
           <button
@@ -41,7 +43,7 @@ function MainView({ setView }) {
           </button>
         </div>
       </div>
-      <div className='question'>{questions[`${today.get('D')}`]}</div>
+      <div className='question'>{questions[date]}</div>
       <div className='content'>
         <textarea
           value={input}
@@ -52,7 +54,7 @@ function MainView({ setView }) {
             localStorage.setItem(
               'diary',
               // ..answers를 추가함으로써 다른 날짜의 내용도 유지함
-              JSON.stringify({ ...answers, [today.get('D')]: value })
+              JSON.stringify({ ...answers, [date]: value })
             );
           }}
         />
